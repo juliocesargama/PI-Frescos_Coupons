@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "0f88ea48-259b-4a7e-becb-3e1f932ee24e",
+		"_postman_id": "825d4356-ea10-42a0-ba8a-ac393eb68568",
 		"name": "PraticaIntegradora",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -789,6 +789,119 @@
 								"v1",
 								"fresh-products",
 								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Coupons",
+			"item": [
+				{
+					"name": "postCoupon",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"couponName\": \"LIQUIDA10\",\n    \"description\": \"Liquidação de congelados 10%\",\n    \"sellingType\": \"FROZEN\",\n    \"active\": true,\n    \"discountUnit\": 10.0,\n    \"discountType\": \"PERCENTAGE\",\n    \"maxUsage\": 50,\n    \"currentUsage\": 0   \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/fresh-products/coupons",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"fresh-products",
+								"coupons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAvailableCoupons",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/fresh-products/coupons",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"fresh-products",
+								"coupons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllCupons",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/fresh-products/coupons/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"fresh-products",
+								"coupons",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "putCoupon",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"couponName\": \"LIQUIDA15\",\n    \"description\": \"Liquidação de congelados 15%\",\n    \"sellingType\": \"FROZEN\",\n    \"active\": true,\n    \"discountUnit\": 10.0,\n    \"discountType\": \"PERCENTAGE\",\n    \"maxUsage\": 50,\n    \"currentUsage\": 0   \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/fresh-products/coupons/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"fresh-products",
+								"coupons",
 								"1"
 							]
 						}

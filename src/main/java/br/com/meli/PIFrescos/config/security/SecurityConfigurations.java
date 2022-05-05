@@ -55,13 +55,17 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 			.antMatchers( "/fresh-products/").hasAnyAuthority("SUPERVISOR", "ADMIN")
 			.antMatchers( "/fresh-products/*").hasAnyAuthority("SUPERVISOR", "ADMIN")
 			.antMatchers( "/fresh-products/batch/list*").hasAnyAuthority("SUPERVISOR", "ADMIN")
+
+				//User
+				.antMatchers(HttpMethod.GET, "/fresh-products/coupons").hasAnyAuthority("SUPERVISOR", "ADMIN")
+				.antMatchers( "/fresh-products/coupons/*").hasAnyAuthority("SUPERVISOR", "ADMIN")
+
 			//User
 			.antMatchers(HttpMethod.GET, "/fresh-products/users").hasAnyAuthority("SUPERVISOR", "ADMIN")
 			.antMatchers( "/fresh-products/users/*").hasAnyAuthority("SUPERVISOR", "ADMIN")
 			//Warehouse
 			.antMatchers("/fresh-products/warehouse").hasAnyAuthority("SUPERVISOR", "ADMIN")
 			.antMatchers("/fresh-products/warehouse/*").hasAnyAuthority("SUPERVISOR", "ADMIN")
-
 
 		.anyRequest().authenticated()
 		.and().csrf().disable()
