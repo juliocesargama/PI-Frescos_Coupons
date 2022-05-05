@@ -1,7 +1,9 @@
-# ProjetoIntegrador - Mercado Livre: Frescos
+# ProjetoIntegrador - Mercado Livre: Frescos & Cupons (Requisito 06)
 
 
-Este Projeto Integrador se destina a simular uma nova modalidade de armazenamento, transporte e comercialização de produtos frescos, congelados e refrigerados do Mercado Livre através de uma API REST em Java com Spring Boot e suas respectivas dependências.
+Este módulo do [Projeto Integrador](https://github.com/juliocesargama/ProjetoIntegrador-MeliFrescos) que se destina a simular uma nova modalidade de armazenamento, transporte e comercialização de produtos frescos, congelados e refrigerados do Mercado Livre através de uma API REST em Java com Spring Boot e suas respectivas dependências, na qual foi adicionada uma nova funcionalidade para disponibilizar cupons de desconto ao compradores do marketplace, dada as condições de certos produtos comercializados na plataforma.
+
+Para mais detalhes, consulte a documentação detalhada do UserStory do requisito disponível neste [link](https://docs.google.com/document/d/e/2PACX-1vQqGinMO54VV19mMn-8B-dFKO0VuGm4sc1sDjxTjuLbRJF_CTo77TkXBUuyzmgXWiIiCTYvKDXPWHiZ/pub).
 
 ### Características e Tecnologias:
 - Java 11;
@@ -26,11 +28,8 @@ Encontra-se dentro do projeto, no diretório abaixo:
 src/main/resources/PostmanCollection.json
 ```
 
-
-- Quadro Kanban com as tasks realizadas [Disponível aqui](https://github.com/juliocesargama/ProjetoIntegrador-MeliFrescos/projects/1).
-
-### Diagramas de Classe
-![DC](https://user-images.githubusercontent.com/70298438/166481858-c235e35d-9865-4d2c-a556-cd2ab11989a9.jpg)
+### Diagramas de Classe (Requisito 06 em vermelho)
+![REQ06 drawio](https://user-images.githubusercontent.com/70298438/166862460-d28d19f5-e474-4ec9-86d1-130fcf7efcfb.png)
 
 
 ### Documentação, Referencial utilizados e Cronologia dos requisitos:
