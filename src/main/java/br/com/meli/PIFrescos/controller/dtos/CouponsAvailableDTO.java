@@ -3,11 +3,17 @@ package br.com.meli.PIFrescos.controller.dtos;
 import br.com.meli.PIFrescos.models.Coupon;
 import br.com.meli.PIFrescos.models.DiscountType;
 import br.com.meli.PIFrescos.models.StorageType;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 //DTO do UserStory do comprador
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class CouponsAvailableDTO {
 
     private String couponName;

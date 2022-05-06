@@ -3,16 +3,13 @@ package br.com.meli.PIFrescos.controller.forms;
 import br.com.meli.PIFrescos.models.Coupon;
 import br.com.meli.PIFrescos.models.DiscountType;
 import br.com.meli.PIFrescos.models.StorageType;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
-@Getter @Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class CouponsForm {
@@ -37,6 +34,8 @@ public class CouponsForm {
     private Integer maxUsage;
     private Integer currentUsage;
 
-    public Coupon convert(){return new Coupon(id,couponName,description,sellingType,active,discountUnit,discountType,maxUsage,currentUsage);}
+    public Coupon convert(){
+        return new Coupon(id,couponName,description,sellingType,active,discountUnit,discountType,maxUsage,currentUsage);
+    }
 
 }

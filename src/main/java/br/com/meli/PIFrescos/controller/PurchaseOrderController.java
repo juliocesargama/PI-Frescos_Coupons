@@ -5,8 +5,11 @@ import br.com.meli.PIFrescos.controller.dtos.PurchaseOrderDTO;
 import br.com.meli.PIFrescos.controller.dtos.TotalPriceDTO;
 import br.com.meli.PIFrescos.controller.forms.PurchaseOrderForm;
 
+import br.com.meli.PIFrescos.models.Coupon;
+import br.com.meli.PIFrescos.models.ProductsCart;
 import br.com.meli.PIFrescos.models.PurchaseOrder;
 import br.com.meli.PIFrescos.models.User;
+import br.com.meli.PIFrescos.service.CouponService;
 import br.com.meli.PIFrescos.service.interfaces.IPurchaseOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,13 +19,15 @@ import org.springframework.web.bind.annotation.*;
 import java.math.BigDecimal;
 import java.util.List;
 
-
 @RestController
 @RequestMapping("/fresh-products/orders")
 public class PurchaseOrderController {
 
     @Autowired
     private IPurchaseOrderService service;
+
+    @Autowired
+    private CouponService couponService;
 
     @Autowired
     private TokenService tokenService;
@@ -34,10 +39,20 @@ public class PurchaseOrderController {
      */
 
     @PostMapping("")
-    public ResponseEntity<TotalPriceDTO> postOrder(@RequestBody PurchaseOrderForm purchaseOrderForm){
+    public ResponseEntity<TotalPriceDTO> postOrder(@RequestBody PurchaseOrderForm purchaseOrderForm, @RequestParam(required = false) String coupon){
 
         PurchaseOrder order = purchaseOrderForm.convertToEntity(tokenService);
         PurchaseOrder savedOrder = service.save(order);
+
+
+        if(!coupon.isEmpty()) {
+            Coupon savedCoupon = couponService.getCouponByName(coupon);
+            BigDecimal temporaryTotalPrice = service.calculateTotalPrice(savedOrder);
+            List<ProductsCart> discountedProducts = couponService.setDiscount(savedOrder.getCartList(), savedCoupon, temporaryTotalPrice);
+
+            savedOrder.setCartList(discountedProducts);
+
+        }
 
         BigDecimal totalPrice = service.calculateTotalPrice(savedOrder);
 

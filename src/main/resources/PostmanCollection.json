@@ -804,10 +804,16 @@
 					"name": "postCoupon",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": 1,\n    \"couponName\": \"LIQUIDA10\",\n    \"description\": \"Liquidação de congelados 10%\",\n    \"sellingType\": \"FROZEN\",\n    \"active\": true,\n    \"discountUnit\": 10.0,\n    \"discountType\": \"PERCENTAGE\",\n    \"maxUsage\": 50,\n    \"currentUsage\": 0   \n}",
+							"raw": "{\n    \"id\": 1,\n    \"couponName\": \"LIQUIDA10\",\n    \"description\": \"Liquidação de congelados por 10% de desconto\",\n    \"sellingType\": \"FROZEN\",\n    \"active\": true,\n    \"discountUnit\": 10.0,\n    \"discountType\": \"PERCENTAGE\",\n    \"maxUsage\": 50,\n    \"currentUsage\": 0   \n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -835,7 +841,13 @@
 					"name": "getAvailableCoupons",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost:8080/api/v1/fresh-products/coupons",
 							"protocol": "http",
@@ -857,7 +869,13 @@
 					"name": "getAllCupons",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost:8080/api/v1/fresh-products/coupons/all",
 							"protocol": "http",
@@ -880,10 +898,16 @@
 					"name": "putCoupon",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"couponName\": \"LIQUIDA15\",\n    \"description\": \"Liquidação de congelados 15%\",\n    \"sellingType\": \"FROZEN\",\n    \"active\": true,\n    \"discountUnit\": 10.0,\n    \"discountType\": \"PERCENTAGE\",\n    \"maxUsage\": 50,\n    \"currentUsage\": 0   \n}",
+							"raw": "{\n    \"couponName\": \"LIQUIDA15\",\n    \"description\": \"Liquidação de congelados R$2OFF\",\n    \"sellingType\": \"FROZEN\",\n    \"active\": true,\n    \"discountUnit\": 2.0,\n    \"discountType\": \"CURRENCY\",\n    \"maxUsage\": 50,\n    \"currentUsage\": 0   \n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -903,6 +927,92 @@
 								"fresh-products",
 								"coupons",
 								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postPurchaseOrder 1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 1,\n    \"orderStatus\": \"OPENED\",\n    \"cartList\": [\n        {\n            \"batchId\": 3,\n            \"quantity\": 1\n        },\n        {\n            \"batchId\": 5,\n            \"quantity\": 1\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/fresh-products/orders?coupon=LIQUIDA10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"fresh-products",
+								"orders"
+							],
+							"query": [
+								{
+									"key": "coupon",
+									"value": "LIQUIDA10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postPurchaseOrder 2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 1,\n    \"orderStatus\": \"OPENED\",\n    \"cartList\": [\n        {\n            \"batchId\": 3,\n            \"quantity\": 3\n        },\n        {\n            \"batchId\": 5,\n            \"quantity\": 1\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/fresh-products/orders?coupon=LIQUIDA15",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"fresh-products",
+								"orders"
+							],
+							"query": [
+								{
+									"key": "coupon",
+									"value": "LIQUIDA15"
+								}
 							]
 						}
 					},
